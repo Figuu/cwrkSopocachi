@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 import PocketBase from "pocketbase";
+import { useRouter } from 'next/navigation';
 import Navbar from "@/app/components/admin/Navbar";
 import { withAuth } from "@/app/protectRoute";
 
 function CreatePlace() {
+  const router = useRouter(); // Inicializa useRouter
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -33,8 +35,10 @@ function CreatePlace() {
       // Subir formData con las fotos
       const newPlace = await pb.collection("places").create(formData);
       setSuccess("Place creado con éxito.");
-
       setError("");
+
+      // Redirigir a la página de lugares después de crear el lugar
+      router.push("/admin/places");
     } catch (err) {
       setError("Error creando place: " + err.message);
       setSuccess("");
