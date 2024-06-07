@@ -8,7 +8,7 @@ const Navbar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center space-x-8">
               <Link href="/">
-                <div className="text-xl font-bold">Logo</div>
+                <div className="text-xl font-bold">CWRK</div>
               </Link>
               <Link href="/find-location">
                 <div className="text-gray-700 hover:text-gray-900">Encontrar ubicación</div>

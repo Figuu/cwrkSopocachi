@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import PocketBase from 'pocketbase';
 import { withAuth } from '../../../protectRoute';
-
 import { useRouter } from 'next/navigation';
 import Navbar from '@/app/components/admin/Navbar';
 
 function CreateAdviser() {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,6 +19,7 @@ function CreateAdviser() {
 
     try {
       await pb.collection('users').create({
+        username,
         email,
         password,
         passwordConfirm: password,
@@ -41,6 +42,16 @@ function CreateAdviser() {
         {error && <p className="text-red-500">{error}</p>}
         {success && <p className="text-green-500">{success}</p>}
         <form onSubmit={handleCreateAdviser}>
+          <div className="mb-4">
+            <label className="block text-gray-700">Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              required
+            />
+          </div>
           <div className="mb-4">
             <label className="block text-gray-700">Email</label>
             <input

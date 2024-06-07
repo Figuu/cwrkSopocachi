@@ -9,13 +9,13 @@ export default function Navbar() {
           <Link href="/admin">Dashboard</Link>
         </li>
         <li>
-          <Link href="/admin/advisers">Crear Adviser</Link>
+          <Link href="/admin/advisers">Asesores</Link>
         </li>
         <li>
-          <Link href="/admin/create-place">Crear Place</Link>
+          <Link href="/admin/places">Espacios de trabajo</Link>
         </li>
         <li>
-          <Link href="/logout">Logout</Link>
+          <Link href="/logout"></Link>
         </li>
       </ul>
     </nav>
